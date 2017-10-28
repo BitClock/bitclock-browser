@@ -1,0 +1,63 @@
+{
+  "name": "bitclock-browser",
+  "version": "0.1.0-beta.1",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BitClock/bitclock-browser.git"
+  },
+  "author": {
+    "name": "Bernard McManus",
+    "email": "bernard.mcmanus.iv@gmail.com",
+    "url": "https://github.com/BitClock"
+  },
+  "homepage": "https://bitclock.io",
+  "main": "dist/module",
+  "module": "dist/module",
+  "browser": "dist/bitclock-browser",
+  "scripts": {
+    "build": "npm run build:browser && npm run build:bundle && npm run build:module",
+    "build:browser": "BABEL_PLATFORM=other npm run webpack -- --config ./webpack/config.browser.babel.js",
+    "build:bundle": "BABEL_PLATFORM=bundle npm run webpack -- --config ./webpack/config.bundle.babel.js",
+    "build:module": "BABEL_PLATFORM=other babel src --out-dir dist/module --source-maps inline",
+    "clean": "rimraf dist",
+    "lint": "eslint . --ignore-path .gitignore",
+    "lint:staged": "lint-staged",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build",
+    "pretest": "npm run clean && npm run lint",
+    "start": "npm run build:bundle && static dist -a 0.0.0.0 -p 8181",
+    "test": "exit 0;",
+    "webpack": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "lint-staged": {
+    "*.js": "lint"
+  },
+  "pre-commit": "lint:staged",
+  "dependencies": {
+    "babel-polyfill": "^7.0.0-beta.3",
+    "babel-runtime": "^6.26.0",
+    "bitclock": "^0.10.1-beta.1",
+    "deepmerge": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^7.0.0-beta.3",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
+    "babel-plugin-transform-runtime": "^7.0.0-beta.3",
+    "babel-preset-env": "^7.0.0-beta.3",
+    "babel-preset-platform": "^1.0.0-alpha.2",
+    "babel-register": "^7.0.0-beta.3",
+    "cross-env": "^5.0.5",
+    "eslint": "^3.5.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.8.0",
+    "lint-staged": "^3.0.2",
+    "node-static": "^0.7.10",
+    "pre-commit": "^1.1.3",
+    "rimraf": "^2.6.0",
+    "webpack": "^3.0.0",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
