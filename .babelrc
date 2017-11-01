@@ -1,6 +1,7 @@
 {
 	presets: [
 		['env', {
+			include: ['es6.object.assign'],
 			targets: {
 				browsers: ['ie >= 11']
 			},
@@ -24,6 +25,6 @@
 		}]
 	],
 	plugins: [
-		'transform-object-rest-spread'
+		['transform-object-rest-spread', { useBuiltIns: true }]
 	]
 }
