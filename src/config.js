@@ -1,10 +1,9 @@
-import bitclock from 'bitclock';
 import merge from 'deepmerge';
 
-export function withDefaults(config = bitclock.Config()) {
+export default function withDefaults(initial) {
 	return merge({
 		networkIdleInflight: 2,
-		networkIdleTimeout: 2000,
+		networkIdleTimeout: 1000,
 		sendOn: 'networkidle',
 		instrument: {
 			core: {
@@ -40,9 +39,5 @@ export function withDefaults(config = bitclock.Config()) {
 				}
 			}
 		}
-	}, config);
-}
-
-export default function getConfig() {
-	return bitclock.Config(withDefaults());
+	}, initial);
 }
