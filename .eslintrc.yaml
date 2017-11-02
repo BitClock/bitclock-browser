@@ -15,4 +15,4 @@ rules:
 settings:
   import/resolver:
     webpack:
-      config: ./webpack/config.browser.babel.js
+      config: ./webpack/config.babel.js

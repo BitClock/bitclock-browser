@@ -1,20 +1,3 @@
-export const noop = () => undefined;
-
-export function off(type, target, fn, useCapture = false) {
-	if (target && target.removeEventListener) {
-		target.removeEventListener(type, fn, useCapture);
-	}
-}
-
-export function on(type, target, fn, useCapture = false) {
-	let removeListener = noop;
-	if (target && target.addEventListener) {
-		target.addEventListener(type, fn, useCapture);
-		removeListener = () => off(type, target, fn, useCapture);
-	}
-	return removeListener;
-}
-
 export function getResourceType(name, initiatorType) {
 	switch (true) {
 		case initiatorType === 'script':
