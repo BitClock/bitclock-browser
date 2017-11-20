@@ -15,7 +15,8 @@ export default {
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: `${pkg.name}.js`,
-		chunkFilename: 'bitclock-browser.chunk.[id].js',
+		chunkFilename: '[chunkhash].js',
+		jsonpFunction: '__bitclockBrowserJsonp',
 		publicPath: production
 			? `https://s3.amazonaws.com/bitclock-public/${pkg.version}/`
 			: (process.env.BASE_URL || '/static/')

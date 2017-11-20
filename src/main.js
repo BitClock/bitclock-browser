@@ -2,7 +2,8 @@ import withDefaults from './config';
 import ResourceTiming from './resource-timing';
 import { getResourceType, camelCase } from './helpers';
 
-module.exports = ({ Config, Transaction }) => {
+module.exports = async () => {
+	const { Config, Transaction } = await import('bitclock');
 	const t = Transaction();
 	const resourceTiming = ResourceTiming(t);
 	const config = Config(withDefaults(Config()));
