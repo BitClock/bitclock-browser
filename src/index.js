@@ -8,12 +8,8 @@ function listenOnce(type, target, fn) {
 	target.addEventListener(type, handler);
 }
 
-async function onLoad() {
-	const [bitclock, main] = await Promise.all([
-		import('bitclock'),
-		import('./main')
-	]);
-	main(bitclock);
+function onLoad() {
+	import('./main').then(main => main());
 }
 
 if (document.readyState === 'complete') {

@@ -1,6 +1,6 @@
 {
   "name": "bitclock-browser",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   "pre-commit": "lint:staged",
   "dependencies": {
     "babel-polyfill": "next",
-    "babel-runtime": "^6.26.0",
+    "babel-runtime": "next",
     "bitclock": "^0.10.1-beta.1",
     "deepmerge": "^2.0.0"
   },
